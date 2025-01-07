@@ -1,0 +1,434 @@
+body {
+    background-color: #fbfbfb;
+}
+.sidebar {
+    background-color: #d9d9d9;
+}
+main {
+    padding-left: 240px;
+}
+.navbar {
+    height: 80px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.custom-navbar {
+    background-color: #808080;
+}
+.navbar-brand img {
+    width: 40px;  
+    height: 40px;
+}
+.footer-brand img {
+    width: 20px;
+    height: 20px;
+}
+.navbar-nav .nav-link {
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+.navbar-nav .nav-link:hover {
+    color: #555;
+}
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+}
+.sidebar .list-group-item {
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #d9d9d9;
+    border: none;
+    color: black;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+.judul-panel{
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #d9d9d9;
+  border: none;
+  color: black;
+  margin-bottom: 10px;
+  padding: 8px 15px;
+}
+
+.sidebar .list-group-item:hover {
+    background-color: #bfbfbf;
+}
+.nav-profile {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+}
+.nav-profile img {
+    margin-left: 5px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+}
+.container {
+    margin-left: 240px;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+.container-form {
+    width: 81%;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.container-forms {
+    display: none;
+    width: 81%;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea {
+    height: 100px;
+    resize: none;
+}
+.time-container, .details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.time-container input[type="text"], .details-container input[type="text"] {
+    width: 20%;
+    padding: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.file-upload {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.file-upload .upload-box {
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.file-upload img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+}
+.submit-btn {
+    display: block;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.popup-container {
+    display: none;
+    justify-content: center;
+    align-items: flex-start; /* Mulai dari atas lalu diberi jarak */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding-top: 100px; /* Menambahkan jarak dari atas */
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close-alert{
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    transition: font-size ease 0.15s;
+}
+.close-alert:hover{
+    font-size: 25px;
+}
+
+.popup-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+.popup-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.photo-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #333;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.photo-placeholder input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Popup Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.event-table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #F2F2F2;
+    border-collapse: collapse;
+}
+
+.event-table th, .event-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #C0C0C0;
+}
+
+.event-table th {
+    font-weight: bold;
+    color: #333333;
+}
+
+.event-table td {
+    color: #333333;
+}
+
+.event-table tr:nth-child(even) {
+    background-color: #E0E0E0;
+}
+
+button.create-event-btn {
+    background-color: #A0A0A0;
+    color: #333333;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button.create-event-btn:hover {
+    background-color: #888888;
+}
+
+button.edit-btn, button.delete-btn {
+    padding: 8px 15px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+button.edit-btn {
+    background-color: #808080;
+}
+
+button.delete-btn {
+    background-color: #333333;
+}
+
+button.edit-btn:hover {
+    background-color: #666666;
+}
+
+button.delete-btn:hover {
+    background-color: #222222;
+}
+
+.table-container {
+    width: 80%;
+    margin: auto;
+}
+
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.data-table th, .data-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.data-table th {
+    background-color: #f2f2f2;
+}
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.btn-data {
+    background-color: #888;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.btn-data:hover {
+    background-color: #555;
+}
+.btn-container {
+    text-align: right;
+    margin-bottom: 10px;
+}
+.container-form {
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+select.selectMahasiswa {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.popup-container-mahasiswa {
+    display: none;
+    justify-content: center;
+    background-color: #bfbfbf;
+    width: 80%;
+    height: 520px;
+    border-radius: 25px;
+    margin-top: 20px;
+    padding-top: 23px;
+}
+
+.popup-content-mahasiswa {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title-popup-mahasiswa {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.form-mahasiswa {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.form-left-mahasiswa, .form-right-mahasiswa {
+    width: 48%;
+}
+
+.form-left-mahasiswa label, .form-right-mahasiswa label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-left-mahasiswa input, .form-right-mahasiswa select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.submit-mahasiswa-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-mahasiswa-btn:hover {
+    background-color: #45a049;
+}

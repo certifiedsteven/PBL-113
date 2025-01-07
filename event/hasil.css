@@ -1,0 +1,72 @@
+body {
+  font-family: 'Lexend', sans-serif;
+  background-image: url('../img/BACKGROUND.png');
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* Gaya untuk kedua card */
+.hasil-voting .card {
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+/* Gaya gambar pemenang */
+.pemenang-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 5px solid #007bff;
+}
+.pemenang-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 5px solid #007bff;
+}
+
+#chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  height: 300px;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+h1, h2 {
+  color: #343a40;
+}
+
+
+@media (max-width: 768px) {
+  .card {
+      padding: 20px;
+  }
+
+  .hasil-voting .row {
+    flex-direction: column;
+  }
+
+  .pemenang-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  #chart-container {
+    height: 200px;
+  }
+
+  h1 {
+      font-size: 1.5rem;
+  }
+
+  h2 {
+      font-size: 1.2rem;
+  }
+}
