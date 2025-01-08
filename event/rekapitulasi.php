@@ -100,7 +100,7 @@ if ($id_voting) {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.php?keluar=true">
+                <a class="nav-link" href="../dashboard.php?keluar=true">
                     Keluar
                     <img src="../img/logout.png" alt="Keluar Icon">
                 </a>
