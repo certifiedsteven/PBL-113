@@ -90,7 +90,7 @@ if ($id_voting) {
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="../dashboard.php">Beranda</a></li>
             <li class="nav-item"><a class="nav-link" href="../daftar_event.php">Pemilihan</a></li>
-            <li class="nav-item"><a class="nav-link" href="event/hasil.php">Hasil</a></li>
+            <li class="nav-item"><a class="nav-link" href="hasil.php">Hasil</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
