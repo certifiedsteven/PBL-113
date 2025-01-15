@@ -227,7 +227,9 @@ $prodi_mahasiswa = $_SESSION['prodi'];
     </div>
     <div class="lebar-acara">
         <?php
-        $query = "SELECT * FROM pemilihan WHERE prodi = '$prodi_mahasiswa'";
+        $query = "SELECT * FROM pemilihan 
+              WHERE prodi = '$prodi_mahasiswa' 
+              ORDER BY tanggal_mulai DESC, waktu_mulai DESC";
         $result = mysqli_query($conn, $query);
         
         if (mysqli_num_rows($result) > 0) {
