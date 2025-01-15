@@ -26,7 +26,7 @@ if ($resultevent->num_rows > 0) {
 $id_pemilihan = isset($_GET['id_pemilihan']) ? $_GET['id_pemilihan'] : (isset($events[0]['id_pemilihan']) ? $events[0]['id_pemilihan'] : 0);
 
 if (isset($_POST['publish'])) {
-    // Mengambil data suara berdasarkan id_pemilihan yang dipilih
+    // Mengambil data suara untuk tabel hasil
     $sql = "SELECT id_kandidat, COUNT(id_kandidat) AS jumlah_suara 
             FROM suara 
             WHERE id_pemilihan = ? 
@@ -36,12 +36,12 @@ if (isset($_POST['publish'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Memasukkan hasil ke dalam tabel hasil
+    // Memasukkan atau memperbarui tabel hasil
     while ($row = $result->fetch_assoc()) {
         $id_kandidat = $row['id_kandidat'];
         $jumlah_suara = $row['jumlah_suara'];
 
-        // Periksa apakah hasil sudah ada di tabel hasil
+        // Periksa apakah hasil sudah ada
         $checkSql = "SELECT id_hasil FROM hasil WHERE id_pemilihan = ? AND id_kandidat = ?";
         $checkStmt = $conn->prepare($checkSql);
         $checkStmt->bind_param('ii', $id_pemilihan, $id_kandidat);
@@ -49,13 +49,13 @@ if (isset($_POST['publish'])) {
         $checkResult = $checkStmt->get_result();
 
         if ($checkResult->num_rows > 0) {
-            // Jika hasil sudah ada, update jumlah suara
+            // Jika ada, update jumlah suara
             $updateSql = "UPDATE hasil SET jumlah_suara = ? WHERE id_pemilihan = ? AND id_kandidat = ?";
             $updateStmt = $conn->prepare($updateSql);
             $updateStmt->bind_param('iii', $jumlah_suara, $id_pemilihan, $id_kandidat);
             $updateStmt->execute();
         } else {
-            // Jika belum ada, insert data ke tabel hasil
+            // Jika belum ada, insert ke tabel hasil
             $insertSql = "INSERT INTO hasil (id_pemilihan, id_kandidat, jumlah_suara) VALUES (?, ?, ?)";
             $insertStmt = $conn->prepare($insertSql);
             $insertStmt->bind_param('iii', $id_pemilihan, $id_kandidat, $jumlah_suara);
@@ -63,7 +63,7 @@ if (isset($_POST['publish'])) {
         }
     }
 
-    // Menutup statement dan koneksi setelah selesai
+    // Tutup statement dan koneksi
     $stmt->close();
     $conn->close();
 
@@ -81,6 +81,8 @@ $conn->close();
     <title>Admin Panel</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="adminpanels.css">
 </head>
 <body>
@@ -127,6 +129,27 @@ $conn->close();
         </div>
     </nav>
 
+    <!-- Modal Konfirmasi -->
+    <div class="modal fade" id="publishModal" tabindex="-1" aria-labelledby="publishModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="publishModalLabel">Konfirmasi Publish</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin mempublish hasil voting ini? Proses ini tidak dapat dibatalkan.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <form method="POST" action="">
+                        <button type="submit" name="publish" class="btn btn-primary">Lanjutkan Publish</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hasil -->
     <div class="container container-form container-data" id="hasilContent">
         <h2>Hasil Voting</h2>
@@ -144,10 +167,10 @@ $conn->close();
         </form>
 
         <canvas id="pieChart"></canvas>
-        <!-- Tombol Publish Hasil -->
-        <form method="POST" action="">
-            <button type="submit" name="publish" class="btn btn-primary">Publish Hasil</button>
-        </form>
+        <!-- Tombol untuk membuka modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publishModal">
+            Publish Hasil
+        </button>
 
     <script>
         let pieChart; // Simpan instance chart untuk memperbarui datanya
