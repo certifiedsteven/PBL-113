@@ -26,6 +26,14 @@ if ($resultevent->num_rows > 0) {
 $id_pemilihan = isset($_GET['id_pemilihan']) ? $_GET['id_pemilihan'] : (isset($events[0]['id_pemilihan']) ? $events[0]['id_pemilihan'] : 0);
 
 if (isset($_POST['publish'])) {
+    $id_pemilihan = isset($_POST['id_pemilihan']) ? $_POST['id_pemilihan'] : 0;
+
+    // Validasi jika ID pemilihan tidak ditemukan
+    if ($id_pemilihan == 0) {
+        echo "ID pemilihan tidak valid.";
+        exit();
+    }
+    
     // Mengambil data suara untuk tabel hasil
     $sql = "SELECT id_kandidat, COUNT(id_kandidat) AS jumlah_suara 
             FROM suara 
@@ -143,12 +151,14 @@ $conn->close();
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                     <form method="POST" action="">
+                        <input type="hidden" id="hidden_id_pemilihan" name="id_pemilihan" value="<?php echo $id_pemilihan; ?>">
                         <button type="submit" name="publish" class="btn btn-primary">Lanjutkan Publish</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Hasil -->
     <div class="container container-form container-data" id="hasilContent">
@@ -235,5 +245,11 @@ setInterval(updateChart, 2000);
 
 // Panggil updateChart saat halaman pertama kali dimuat
 updateChart();
+
+document.getElementById('id_pemilihan').addEventListener('change', function () {
+    const hiddenInput = document.getElementById('hidden_id_pemilihan');
+    hiddenInput.value = this.value;
+});
+
 </script>
 </div>
