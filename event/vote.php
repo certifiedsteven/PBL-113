@@ -173,9 +173,8 @@ if (isset($_SESSION['notification'])) {
                 
                 $now = time(); // Waktu server saat ini
                 $startTimestamp = strtotime($tanggal_mulai . ' ' . $waktu_mulai);
-                $disabled = ($now < $startTimestamp) ? 'disabled' : '';
 
-                echo "<button class='lecturer-button' data-id='$idKandidat' id='btnPilih' data-nama='$namaKandidat' data-selected='$isSelected' $disabled>PILIH</button>";
+                echo "<button class='lecturer-button' data-id='$idKandidat' id='btnPilih' data-nama='$namaKandidat' data-selected='$isSelected'>PILIH</button>";
                 echo "</div>";
                 echo "</div>";
 
